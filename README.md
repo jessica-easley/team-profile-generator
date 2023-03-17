@@ -28,5 +28,6 @@ THEN I exit the application, and the HTML is generated
 # Technologies Used
 * Javascript - Node.js
 * Inquirer.js
+* Jest.js
 
 # Screenshot of Application
