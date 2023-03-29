@@ -1,7 +1,7 @@
 # Team Profile Generator
 This application is a Node.js command-line application that takes in information about employees on a software engineering team and generates an HTML webpage that displays summaries for each person. 
 
-# View Application Here: 
+# View Application Here: https://watch.screencastify.com/v/SOwDMV1mcpwwgsdHRS0T
 
 # User Story
 AS A manager
