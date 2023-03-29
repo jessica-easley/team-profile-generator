@@ -6,7 +6,15 @@ const Manager = require("./lib/Manager");
 const genPage = require("./src/template.js");
 const myTeam = [];
 
-function Manager() {
+const idArray = [];
+
+console.log(
+  '\nHello! Welcome to the team generator!\nUse `npm run reset` to reset the dist/ folder\n'
+);
+
+function appMenu() {
+function managerCreate() {
+  console.log('Please build your team 👥');
   inquirer
     .createPromptModule([
       {
@@ -27,7 +35,7 @@ function Manager() {
       {
         type: "input",
         name: "office",
-        message: "What is the Team Manaer's office number?",
+        message: "What is the Team Manager's office number?",
       },
     ])
     .then((data) => {
@@ -39,20 +47,20 @@ function Manager() {
 
 function secondInput() {
   inquirer
-    .createPromptModule([
+    .prompt([
       {
         type: "list",
         name: "prompt",
         message: "What would you like to do next?",
-        choices: ["Add Intern", "Add Engineer", "Write File"],
+        choices: ["Add an Intern", "Add an Engineer", "Write File"],
       },
     ])
     .then((answers) => {
       switch (answers.prompt) {
-        case "Add Intern":
+        case "Add an Intern":
           addIntern();
           break;
-        case "Add Engineer":
+        case "Add an Engineer":
           addEngineer();
           break;
         case "Write File":
@@ -61,6 +69,7 @@ function secondInput() {
       }
     });
 }
+
 
 function addIntern() {
 inquirer
@@ -131,4 +140,7 @@ function writeFile() {
   });
 }
 
-Manager();
+managerCreate();
+}
+
+appMenu();
