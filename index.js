@@ -4,9 +4,8 @@ const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
 const Manager = require("./lib/Manager");
 const genPage = require("./src/template.js");
-const myTeam = [];
 
-const idArray = [];
+const team = [];
 
 console.log(
   '\nHello! Welcome to the team generator!\nUse `npm run reset` to reset the dist/ folder\n'
@@ -16,7 +15,7 @@ function appMenu() {
 function managerCreate() {
   console.log('Please build your team 👥');
   inquirer
-    .createPromptModule([
+    .prompt([
       {
         type: "input",
         name: "name",
@@ -37,10 +36,10 @@ function managerCreate() {
         name: "office",
         message: "What is the Team Manager's office number?",
       },
-    ])
+  ])
     .then((data) => {
       const manager = new Manager(data.name, data.id, data.email, data.office);
-      myTeam.push(manager);
+      team.push(manager);
       secondInput();
     });
 }
@@ -97,7 +96,7 @@ inquirer
 ])
 .then((data) => {
     const intern = new Intern(data.name, data.id, data.email, data.school);
-    myTeam.push(intern);
+    team.push(intern);
     secondInput();
   });
 }
@@ -128,13 +127,13 @@ function addEngineer() {
     ])
     .then((data) => {
         const engineer = new Engineer(data.name, data.id, data.email, data.school);
-        myTeam.push(engineer);
+        team.push(engineer);
         secondInput();
       });
 }
 
 function writeFile() {
-  fs.writeFile("./dist/index.html", genPage(myTeam), (err) => {
+  fs.writeFile("./dist/index.html", genPage(team), (err) => {
     if (err) throw err;
     console.log("Success! Your HTML has been created.");
   });
